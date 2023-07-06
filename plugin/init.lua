@@ -35,7 +35,9 @@ M.apply_to_config = function(c, opts)
 		local fgp = pane:get_foreground_process_info() or { name = "" }
 
 		if opts.padding_rules[fgp.name] ~= nil then
-			window:set_config_overrides(opts.padding_rules[fgp.name])
+			window:set_config_overrides({
+				window_padding = opts.padding_rules[fgp.name],
+			})
 		elseif opts.alt_screen and pane:is_alt_screen_active() then
 			window:set_config_overrides({
 				window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
